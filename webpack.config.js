@@ -1,47 +1,47 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
-	mode: 'development',
+	mode: "development",
 	entry: {
-		epubreader: './src/main.js'
+		epubreader: "./src/main.js",
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'js/[name].js',
-		sourceMapFilename: 'js/[name].js.map'
+		path: path.resolve(__dirname, "dist"),
+		filename: "js/[name].js",
+		sourceMapFilename: "js/[name].js.map",
 	},
-	devtool: 'source-map',
+	// devtool: 'source-map',
 	optimization: {
-		minimize: false
+		minimize: false,
 	},
 	devServer: {
 		static: {
-			directory: path.join(__dirname, 'dist')
+			directory: path.join(__dirname, "dist"),
 		},
 		compress: true,
-		port: 8080
+		port: 8080,
 	},
 	plugins: [
 		new CopyPlugin({
 			patterns: [
 				{
-					from: 'node_modules/jszip/dist/jszip.min.js',
-					to: 'js/libs/jszip.min.js',
-					toType: 'file',
-					force: true
+					from: "node_modules/jszip/dist/jszip.min.js",
+					to: "js/libs/jszip.min.js",
+					toType: "file",
+					force: true,
 				},
 				{
-					from: 'node_modules/js-md5/build/md5.min.js',
-					to: 'js/libs/md5.min.js',
-					toType: 'file',
-					force: true
+					from: "node_modules/js-md5/build/md5.min.js",
+					to: "js/libs/md5.min.js",
+					toType: "file",
+					force: true,
 				},
 				{
-					from: 'node_modules/epubjs/dist/epub.min.js',
-					to: 'js/libs/epub.min.js',
-					toType: 'file',
-					force: true
+					from: "node_modules/epubjs/dist/epub.min.js",
+					to: "js/libs/epub.min.js",
+					toType: "file",
+					force: true,
 				},
 			],
 			options: {
@@ -50,14 +50,13 @@ const config = {
 		}),
 	],
 	performance: {
-		hints: false
-	}
+		hints: false,
+	},
 };
 
 module.exports = (env, args) => {
-
 	if (args.optimizationMinimize) {
-		config.output.filename = 'js/[name].min.js';
+		config.output.filename = "js/[name].min.js";
 	}
 
 	return config;
