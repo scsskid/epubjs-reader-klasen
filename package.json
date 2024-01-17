@@ -1,0 +1,26 @@
+{
+    "name": "epubjs-reader",
+    "version": "0.3.1",
+    "repository": "https://github.com/futurepress/epubjs-reader",
+    "description": "ePub.js Reader",
+    "main": "src/main.js",
+    "scripts": {
+        "build": "webpack --mode=production --progress",
+        "serve": "webpack serve",
+        "minify": "webpack --mode=production --optimization-minimize --progress",
+        "prepare": "npm run build && npm run minify"
+    },
+    "author": "fchasen@gmail.com",
+    "license": "MIT",
+    "devDependencies": {
+        "copy-webpack-plugin": "^8.1.1",
+        "webpack": "^5.88.2",
+        "webpack-cli": "^4.10.0",
+        "webpack-concat-files-plugin": "^0.5.2",
+        "webpack-dev-server": "^4.15.1"
+    },
+    "dependencies": {
+        "epubjs": "^0.3.93",
+        "js-md5": "^0.7.3"
+    }
+}
