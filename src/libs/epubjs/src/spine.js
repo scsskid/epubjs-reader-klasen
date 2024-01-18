@@ -152,7 +152,7 @@ class Spine {
 		} else if (typeof target === "string") {
 			// Remove fragments
 			console.log("here");
-			debugger;
+			// debugger;
 			target = target.split("#")[0];
 			index =
 				this.spineByHref[target] || this.spineByHref[encodeURI(target)];

@@ -1,5 +1,6 @@
 #toolbar {
-	/* height: 58px; */
+	height: 58px;
+	top: 58px;
 	margin: 0;
 	padding: 0;
 	z-index: 10;
@@ -16,7 +17,6 @@
 	padding: 0;
 	display: inline-flex;
 	outline: none;
-	opacity: 0.2;
 	vertical-align: middle;
 	background-size: 24px;
 	background-color: transparent;
@@ -40,15 +40,14 @@
 }
 
 #start {
-	flex: 0.6;
+	flex: 0 0 58px;
 }
 
 #metadata {
 	flex: 1.8;
-	text-align: center;
 	align-items: center;
-	color: gray;
 	padding-top: 20px;
+	padding-right: 20px;
 }
 
 #book-title {
@@ -67,6 +66,11 @@
 #end {
 	flex: 0.6;
 	text-align: end;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: aqua;
 }
 
 #btn-s {
@@ -100,6 +104,10 @@
 
 #btn-f {
 	background-image: url("../img/close.svg");
+}
+
+#btn-t {
+	background-image: url("../img/fontsize.svg");
 }
 
 #btn-f.resize-small {

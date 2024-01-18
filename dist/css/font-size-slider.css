@@ -3,7 +3,8 @@
 		Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
 		sans-serif;
 	position: fixed;
-	bottom: 0;
+	top: 58px;
+	z-index: 10;
 	left: 0;
 	width: 100%;
 	padding: 0.75rem 1rem;
@@ -13,4 +14,9 @@
 	gap: 1rem;
 	align-items: center;
 	justify-content: center;
+	display: none;
+}
+
+.font-size-slider.active {
+	display: flex;
 }

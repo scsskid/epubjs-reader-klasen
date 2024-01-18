@@ -48,7 +48,7 @@ body {
 }
 
 #content.closed {
-	width: calc(100% - 300px);
+	width: 0;
 }
 
 #content.closed > #viewer {

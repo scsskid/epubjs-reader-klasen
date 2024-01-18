@@ -30,16 +30,19 @@ export class Toolbar {
 
 		const end = new UIPanel().setId("end");
 
-		const closeEPub = new UIInput("button").setId("btn-f");
-		const closeEPubStR = "X"; //strings.get('toolbar/fullsceen');
-		closeEPub.dom.title = closeEPubStR;
-		closeEPub.dom.addEventListener("click", () => {
-			alert("close the issue");
-			purple.closeView();
+		// font size button
+
+		const fontSize = new UIInput("button").setId("btn-t");
+		const fontSizeStr = "change font size";
+		fontSize.dom.title = fontSizeStr;
+		fontSize.dom.addEventListener("click", () => {
+			// alert("open font size panel");
+			reader.emit("toggle font size slider");
 		});
 
-		end.add(closeEPub);
+		end.add(fontSize);
 
+		//bookmark button
 		const bookmark = new UIInput("button").setId("btn-b");
 		const bookmarkStr = strings.get("toolbar/bookmark");
 		bookmark.dom.title = bookmarkStr;
@@ -49,6 +52,17 @@ export class Toolbar {
 		});
 
 		end.add(bookmark);
+
+		// close issue button
+		const closeEPub = new UIInput("button").setId("btn-f");
+		const closeEPubStR = "X"; //strings.get('toolbar/fullsceen');
+		closeEPub.dom.title = closeEPubStR;
+		closeEPub.dom.addEventListener("click", () => {
+			alert("close the issue");
+			purple.closeView();
+		});
+
+		end.add(closeEPub);
 
 		container.add([start, center, end]);
 		document.body.appendChild(container.dom);
