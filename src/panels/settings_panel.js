@@ -104,7 +104,6 @@ export class SettingsPanel extends UIPanel {
 		});
 
 		reader.on("styleschanged", (value) => {
-			console.log("styleschanged");
 			if (fontSize.getValue() !== value["fontSize"]) {
 				fontSize.setValue(value["fontSize"]);
 			}
