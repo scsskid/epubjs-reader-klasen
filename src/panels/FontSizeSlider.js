@@ -1,23 +1,41 @@
-export function FontSizeSlider(reader) {
-	console.log("FontSizeSlider", reader);
+export class FontSizeSlider {
+	constructor(reader) {
+		console.log("FontSizeSlider2", reader);
 
-	const input = document.createElement("input");
-	input.type = "range";
+		this.buildDomElements();
+		this.listen();
+		this.init();
 
-	const label = document.createElement("div");
-	label.style["position"] = "fixed";
-	label.style["zIndex"] = "100";
+		// !throws webpack error
+		// reader.on("bookready", (e) => {
+		//   console.log("bookready -> init()", e);
+		// }
+	}
 
-	label.textContent = "Font Size";
-	label.classList.add("font-size-slider-foo");
-	label.appendChild(input);
+	buildDomElements() {
+		this.container = document.createElement("div");
+		this.container.style["position"] = "fixed";
+		this.container.style["zIndex"] = "100";
+		this.container.textContent = "Font Size";
+		this.container.classList.add("font-size-slider");
 
-	document.body.append(label);
+		this.input = document.createElement("input");
+		this.input.type = "range";
 
-	input.addEventListener("input", (e) => {
-		console.log(e.target.value);
-		reader.emit("styleschanged", {
-			fontSize: parseInt(e.target.value) * 2,
+		this.container.appendChild(this.input);
+	}
+
+	listen() {
+		this.input.addEventListener("input", (e) => {
+			console.log(e.target.value);
+			reader.emit("styleschanged", {
+				fontSize: parseInt(e.target.value) * 2,
+			});
 		});
-	});
+	}
+
+	init() {
+		console.log("FontSizeSlider2 init");
+		document.body.append(this.container);
+	}
 }
