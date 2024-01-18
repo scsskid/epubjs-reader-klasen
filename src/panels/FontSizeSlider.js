@@ -6,7 +6,6 @@ export class FontSizeSlider {
 		this.listen();
 		this.init();
 
-		console.log(reader.settings.styles.fontSize);
 		this.input.value = reader.settings?.styles?.fontSize || 100;
 
 		// !throws webpack error
