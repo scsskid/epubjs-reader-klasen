@@ -1,47 +1,43 @@
-import { UIPanel, UITreeView, UITreeViewItem, UILink } from '../ui.js';
+import { UIPanel, UITreeView, UITreeViewItem, UILink } from "../ui.js";
 
 export class TocPanel extends UIPanel {
-
 	constructor(reader) {
-
 		super();
-		super.setId('contents');
+		super.setId("contents");
 
 		this.reader = reader;
 		this.selector = undefined; // save reference to selected tree item
 
 		//-- events --//
 
-		reader.on('navigation', (toc) => {
-
+		reader.on("navigation", (toc) => {
+			console.log("on navigation", toc);
 			this.init(toc);
 		});
 	}
 
 	init(toc) {
-
 		super.clear();
 		super.add(this.generateToc(toc));
 	}
 
 	generateToc(toc, parent) {
-
 		const container = new UITreeView();
 
 		toc.forEach((chapter) => {
-
 			const link = new UILink(chapter.href, chapter.label);
 			const treeItem = new UITreeViewItem(chapter.id, link, parent);
 
 			link.dom.onclick = () => {
-
+				console.log("link clicked", chapter.href);
+				console.log("this.reader", this.reader);
 				this.reader.rendition.display(chapter.href);
 				if (this.selector && this.selector !== treeItem) {
 					this.selector.unselect();
 				}
 				treeItem.select();
 				this.selector = treeItem;
-				this.reader.emit('tocselected', chapter.id);
+				this.reader.emit("tocselected", chapter.id);
 				return false;
 			};
 
@@ -51,7 +47,6 @@ export class TocPanel extends UIPanel {
 			}
 
 			if (chapter.subitems && chapter.subitems.length > 0) {
-
 				treeItem.setItems(this.generateToc(chapter.subitems, treeItem));
 			}
 

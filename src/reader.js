@@ -1,3 +1,4 @@
+import ePub from "./libs/epubjs/src/index.js";
 import EventEmitter from "event-emitter";
 
 import { Toolbar } from "./toolbar.js";

@@ -1,7 +1,5 @@
 export class FontSizeSlider {
 	constructor(reader) {
-		console.log("FontSizeSlider2", reader);
-
 		this.buildDomElements();
 		this.listen();
 		this.init();
